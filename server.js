@@ -1,13 +1,24 @@
 const express = require("express");
-
+const bodyparser = require("body-parser");
+const cors = require("cors");
+const db = require("./query");
 const path = require("path");
-
 const app = express();
-
-app.use(express.static("./dist/angular-app-heroku"));
-
-app.get("/*", (req, res) =>
-  res.sendFile("index.html", { root: "dist/angular-app-heroku/" })
+var distDir = __dirname + "/dist/";
+app.use(express.static(__dirname + "/public"));
+app.use(express.static(distDir));
+const port = process.env.PORT || 3333;
+app.use(cors());
+app.use(bodyparser.json());
+app.use(
+  bodyparser.urlencoded({
+    extended: true,
+  })
 );
-
-app.listen(process.env.PORT || 8080);
+//database endpoints will be here
+app.get("/", (request, response) => {
+  response.json({ info: "Node.js,Express, and Postgres API" });
+});
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`);
+});

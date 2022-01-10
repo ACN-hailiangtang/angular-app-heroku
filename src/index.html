@@ -1,16 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <title>AngularAppHeroku</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <div data-ng-app="" data-ng-init="quantity=1;price=5">
-      <h2>价格计算器</h2>
-
-      数量: <input type="number" ng-model="quantity" /> 价格:
-      <input type="number" ng-model="price" />
-
-      <p><b>总价:</b> {{quantity * price}}</p>
-    </div>
+    <app-root></app-root>
   </body>
 </html>
